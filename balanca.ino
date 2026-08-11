@@ -7,7 +7,7 @@ const int PINO_SCK = 14;  // Ou GPIO 17 se você mudou os fios
 HX711 balanca;
 
 // Fator de calibração padrão (deve ser diferente de ZERO!)
-float fatorCalibracao = 4900.0; 
+float fatorCalibracao = 490.0; 
 
 // Limite máximo suportado (1 kg)
 const float CAPACIDADE_MAXIMA = 1000.0; 
@@ -45,7 +45,7 @@ void loop() {
     float peso = balanca.get_units(5); 
 
     // Filtra pequenas oscilações de ruído
-    if (peso < 0.5 && peso > -0.5) {
+    if (peso < 2.5 && peso > -2.5) {
       peso = 0.0;
     }
 
